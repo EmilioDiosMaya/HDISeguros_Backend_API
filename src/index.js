@@ -12,8 +12,10 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // Rutas
-app.use(require('./routes/ajustador')); 
-app.use('/api/ajustadores',require('./routes/ajustador'));
+app.use('/',require('./routes/routes')); 
+app.use('/ajustadores',require('./routes/AjustadorRoutes'));
+app.use('/ejecutivos',require('./routes/EjecutivoRoutes'));
+app.use('/conductores',require('./routes/ConductorRoutes'));
 
 // Empezando el servidor
 app.listen(3000, () => {
