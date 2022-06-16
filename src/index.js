@@ -21,6 +21,7 @@ app.use('/reportesiniestro', require('./routes/ReporteSiniestro'));
 app.use('/imagenes', require('./routes/ImagenRoutes'));
 app.use('/vehiculos', require('./routes/VehiculoRoutes'));
 app.use('/dictamenes', require('./routes/DictamenRoutes'));
+app.use('/loginconductor', require('./routes/LoginConductor'));
 
 // Empezando el servidor
 app.listen(3000, () => {
