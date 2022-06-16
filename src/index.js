@@ -17,6 +17,7 @@ app.use('/ajustadores', require('./routes/AjustadorRoutes'));
 app.use('/ejecutivos', require('./routes/EjecutivoRoutes'));
 app.use('/conductores', require('./routes/ConductorRoutes'));
 app.use('/polizaseguro', require('./routes/PolizaSeguroRoutes'));
+app.use('/reportesiniestro', require("./routes/ReporteSiniestro"));
 
 // Empezando el servidor
 app.listen(3000, () => {
