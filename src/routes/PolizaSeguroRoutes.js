@@ -3,7 +3,7 @@ const router = Router();
 const mysqlConnection = require('../database');
 
 router.get('/', async (req, res) => {
-    mysqlConnection.query('CALL R_PolizaSeguro()', (err, rows, fields) => {
+    mysqlConnection.query('CALL R_Poliza()', (err, rows, fields) => {
         if (!err) {
             res.json(rows[0])
         } else {
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:idPolizaSeguro', (req, res) => {
     const { idPolizaSeguro } = req.params;
-    mysqlConnection.query('CALL R_PolizaSeguroByID(?)', [idPolizaSeguro], (err, rows, fields) => {
+    mysqlConnection.query('CALL R_PolizaByID(?)', [idPolizaSeguro], (err, rows, fields) => {
         if (!err) {
             res.status(200).json(rows[0][0])
         } else {
@@ -25,7 +25,7 @@ router.get('/:idPolizaSeguro', (req, res) => {
 
 router.post('/', (req, res) => {
     const { AniosCobertura, Precio, idVehiculo, idTipoCobertura } = req.body
-    mysqlConnection.query('CALL C_PolizaSeguro(?, ?, ?, ?)', [AniosCobertura, Precio, idVehiculo, idTipoCobertura], (err, rows, fields) => {
+    mysqlConnection.query('CALL C_Poliza(?, ?, ?, ?)', [AniosCobertura, Precio, idVehiculo, idTipoCobertura], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {
