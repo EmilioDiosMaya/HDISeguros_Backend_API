@@ -8,15 +8,15 @@ app.set('json spaces', 2);
 
 // Middlewares
 app.use(morgan('dev'));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Rutas
-app.use('/',require('./routes/routes')); 
-app.use('/ajustadores',require('./routes/AjustadorRoutes'));
-app.use('/ejecutivos',require('./routes/EjecutivoRoutes'));
-app.use('/conductores',require('./routes/ConductorRoutes'));
-// app.use('/polizaseguro',require(''))
+app.use('/', require('./routes/routes'));
+app.use('/ajustadores', require('./routes/AjustadorRoutes'));
+app.use('/ejecutivos', require('./routes/EjecutivoRoutes'));
+app.use('/conductores', require('./routes/ConductorRoutes'));
+app.use('/polizaseguro', require('./routes/PolizaSeguroRoutes'));
 
 // Empezando el servidor
 app.listen(3000, () => {
