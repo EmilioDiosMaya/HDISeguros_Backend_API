@@ -20,6 +20,7 @@ app.use('/polizaseguro', require('./routes/PolizaSeguroRoutes'));
 app.use('/reportesiniestro', require('./routes/ReporteSiniestro'));
 app.use('/imagenes', require('./routes/ImagenRoutes'));
 app.use('/vehiculos', require('./routes/VehiculoRoutes'));
+app.use('/dictamenes', require('./routes/DictamenRoutes'));
 
 // Empezando el servidor
 app.listen(3000, () => {
