@@ -4,6 +4,7 @@
   "description": "Esta es la API de HDI Seguros de la cuál se pasará la información de las solicitudes al sistema, manejando solicitudes de tipo; GET. POST, PATCH y DELETE",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon src/index.js",
     "dev": "nodemon src/index.js"
   },
   "repository": {
