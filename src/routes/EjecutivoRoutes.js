@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = Router();
+const mysqlConnection = require('../database');
 
 router.get('/', async (req, res) => {
     mysqlConnection.query('CALL R_Usuario()', (err, rows, fields) => {
