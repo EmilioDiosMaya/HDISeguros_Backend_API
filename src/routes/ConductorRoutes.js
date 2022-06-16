@@ -26,8 +26,8 @@ router.get('/:idConductor', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { idConductor, Telefono, NumeroLicencia, idUsuario } = req.body
-    mysqlConnection.query('CALL CU_Conductor(?, ?, ?, ?)', [idConductor, Telefono, NumeroLicencia, idUsuario], (err, rows, fields) => {
+    const { NombreCompleto, FechaNacimiento, Contrasenia, idTipoUsuario, Telefono, NumeroLicencia } = req.body
+    mysqlConnection.query('CALL C_Conductor(?, ?, ?, ?, ?, ?)', [NombreCompleto, FechaNacimiento, Contrasenia, idTipoUsuario, Telefono, NumeroLicencia], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {
@@ -36,29 +36,5 @@ router.post('/', (req, res) => {
     })
     return res.status(200).json("Este es el POST de conductores");
 });
-
-router.put('/:idConductor', (req, res) => {
-    const { idUsuario } = req.params;
-    mysqlConnection.query('CALL CU_Conductor(?, ?, ?, ?, ?, ?, ?)', [idConductor, Telefono, NumeroLicencia, idUsuario], (err, rows, fields) => {
-        if (!err) {
-            res.status(201).json(rows[0][0])
-        } else {
-            console.log(err)
-        }
-    })
-    return res.status(200).json("Este es el PUT de conductores");
-});
-
-router.delete('/:idConductor', (req, res) => {
-    const { idConductor } = req.params;
-    mysqlConnection.query('CALL D_Conductor(?)', [idConductor], (err, rows, fields) => {
-        if (!err) {
-            res.status(200).json(rows[0][0])
-        } else {
-            res.status(500)
-        }
-    })
-    return res.status(200).json("Este es el DELETE de conductores");
-})
 
 module.exports = router;

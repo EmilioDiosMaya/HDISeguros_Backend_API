@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     return res.status(200).json("Este es el GET de Poliza de Seguro que trae a todas las Polizas de Seguro");
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:idPolizaSeguro', (req, res) => {
     const { idPolizaSeguro } = req.params;
     mysqlConnection.query('CALL R_PolizaSeguroByID(?)', [idPolizaSeguro], (err, rows, fields) => {
         if (!err) {
@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     const { idPolizaSeguro, AniosCobertura, FechaCompra, Precio, idVehiculo, idTipoCobertura } = req.body
-    mysqlConnection.query('CALL CU_PolizaSeguro(?, ?, ?, ?, ?, ?)', [idPolizaSeguro, AniosCobertura, FechaCompra, Precio, idVehiculo, idTipoCobertura], (err, rows, fields) => {
+    mysqlConnection.query('CALL C_PolizaSeguro(?, ?, ?, ?, ?, ?)', [idPolizaSeguro, AniosCobertura, FechaCompra, Precio, idVehiculo, idTipoCobertura], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {

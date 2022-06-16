@@ -3,7 +3,7 @@ const router = Router();
 const mysqlConnection = require('../database');
 
 router.get('/', async (req, res) => {
-    mysqlConnection.query('CALL R_Imagen()', (err, rows, fields) => {
+    mysqlConnection.query('CALL R_Fotografia()', (err, rows, fields) => {
         if (!err) {
             res.json(rows[0])
         } else {
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:idImagen', (req, res) => {
     const { idImagen } = req.params;
-    mysqlConnection.query('CALL R_ImagenByID(?)', [idImagen], (err, rows, fields) => {
+    mysqlConnection.query('CALL R_FotografiaByID(?)', [idImagen], (err, rows, fields) => {
         if (!err) {
             res.status(200).json(rows[0][0])
         } else {
@@ -27,7 +27,7 @@ router.get('/:idImagen', (req, res) => {
 
 router.post('/', (req, res) => {
     const { idImagen, Url, idReporteSiniestro } = req.body
-    mysqlConnection.query('CALL CU_Imagen(?, ?, ?)', [idImagen, Url, idReporteSiniestro], (err, rows, fields) => {
+    mysqlConnection.query('CALL C_Fotografia(?, ?, ?)', [idImagen, Url, idReporteSiniestro], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {
