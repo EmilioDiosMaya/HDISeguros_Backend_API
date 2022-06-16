@@ -16,6 +16,7 @@ app.use('/',require('./routes/routes'));
 app.use('/ajustadores',require('./routes/AjustadorRoutes'));
 app.use('/ejecutivos',require('./routes/EjecutivoRoutes'));
 app.use('/conductores',require('./routes/ConductorRoutes'));
+// app.use('/polizaseguro',require(''))
 
 // Empezando el servidor
 app.listen(3000, () => {
