@@ -26,8 +26,8 @@ router.get('/:idDictamen', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { idDictamen, Descripcion, FechaCreacion, idReporteSiniestro, idUsuario } = req.body
-    mysqlConnection.query('CALL C_Dictamen(?, ?, ?, ?, ?)', [idDictamen, Descripcion, FechaCreacion, idReporteSiniestro, idUsuario], (err, rows, fields) => {
+    const { Descripcion, idReporteSiniestro, idUsuario } = req.body
+    mysqlConnection.query('CALL C_Dictamen(?, ?, ?)', [Descripcion, idReporteSiniestro, idUsuario], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {

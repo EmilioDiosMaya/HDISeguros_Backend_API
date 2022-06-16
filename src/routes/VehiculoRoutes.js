@@ -26,8 +26,8 @@ router.get('/:idVehiculo', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { idVehiculo, Modelo, Marca, NumSerie, Color, NumPlaca, Anio, idConductor } = req.body
-    mysqlConnection.query('CALL C_Vehiculo(?, ?, ?, ?, ?, ?, ?, ?)', [idVehiculo, Modelo, Marca, NumSerie, Color, NumPlaca, Anio, idConductor], (err, rows, fields) => {
+    const { Modelo, Marca, NumSerie, Color, NumPlacas, Anio, idConductor } = req.body
+    mysqlConnection.query('CALL C_Vehiculo(?, ?, ?, ?, ?, ?, ?)', [Modelo, Marca, NumSerie, Color, NumPlacas, Anio, idConductor], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {

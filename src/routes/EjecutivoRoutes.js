@@ -26,8 +26,8 @@ router.get('/:idUsuario', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { NombreCompleto, FechaNacimiento, contrasenia, NombreUsuario, idTipoUsuario } = req.body
-    mysqlConnection.query('CALL C_Usuario(?, ?, ?, ?, ?)', [NombreCompleto, FechaNacimiento, contrasenia, NombreUsuario, idTipoUsuario], (err, rows, fields) => {
+    const { NombreCompleto, FechaNacimiento, Contrasenia, NombreUsuario, idTipoUsuario } = req.body
+    mysqlConnection.query('CALL C_Usuario(?, ?, ?, ?, ?)', [NombreCompleto, FechaNacimiento, Contrasenia, NombreUsuario, idTipoUsuario], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {

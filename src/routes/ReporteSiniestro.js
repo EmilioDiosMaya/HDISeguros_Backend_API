@@ -26,8 +26,8 @@ router.get('/:idReporteSiniestro', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { idReporteSiniestro, FechaReporte, Latitud, Longitud, EsDictaminado } = req.body
-    mysqlConnection.query('CALL C_ReporteSiniestro(?, ?, ?, ?, ?)', [idReporteSiniestro, FechaReporte, Latitud, Longitud, EsDictaminado], (err, rows, fields) => {
+    const { Latitud, Longitud, idVehiculo } = req.body
+    mysqlConnection.query('CALL C_ReporteSiniestro(?, ?, ?)', [Latitud, Longitud, idVehiculo], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
 
 router.put('/:idReporteSiniestro', (req, res) => {
     const { idReporteSiniestro } = req.params;
-    mysqlConnection.query('CALL U_ReporteSiniestro(?, ?, ?, ?, ?)', [idReporteSiniestro, FechaReporte, Latitud, Longitud, EsDictaminado], (err, rows, fields) => {
+    mysqlConnection.query('CALL U_ReporteSiniestro(?, ?, ?)', [Latitud, Longitud, idVehiculo], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {

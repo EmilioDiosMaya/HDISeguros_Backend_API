@@ -26,8 +26,8 @@ router.get('/:idImagen', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { idImagen, Url, idReporteSiniestro } = req.body
-    mysqlConnection.query('CALL C_Fotografia(?, ?, ?)', [idImagen, Url, idReporteSiniestro], (err, rows, fields) => {
+    const { Url, idReporteSiniestro } = req.body
+    mysqlConnection.query('CALL C_Fotografia(?, ?)', [Url, idReporteSiniestro], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {

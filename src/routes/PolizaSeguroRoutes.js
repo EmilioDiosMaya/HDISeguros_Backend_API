@@ -26,8 +26,8 @@ router.get('/:idPolizaSeguro', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { idPolizaSeguro, AniosCobertura, FechaCompra, Precio, idVehiculo, idTipoCobertura } = req.body
-    mysqlConnection.query('CALL C_PolizaSeguro(?, ?, ?, ?, ?, ?)', [idPolizaSeguro, AniosCobertura, FechaCompra, Precio, idVehiculo, idTipoCobertura], (err, rows, fields) => {
+    const { AniosCobertura, Precio, idVehiculo, idTipoCobertura } = req.body
+    mysqlConnection.query('CALL C_PolizaSeguro(?, ?, ?, ?)', [AniosCobertura, Precio, idVehiculo, idTipoCobertura], (err, rows, fields) => {
         if (!err) {
             res.status(201).json(rows[0][0])
         } else {
