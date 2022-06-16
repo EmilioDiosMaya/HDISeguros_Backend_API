@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', (req, res) => {
     const { idReporteSiniestro } = req.params;
-    mysqlConnection.query('CALL R_ReporteSiniestro(?)', [id], (err, rows, fields) => {
+    mysqlConnection.query('CALL R_ReporteSiniestro(?)', [idReporteSiniestro], (err, rows, fields) => {
         if (!err) {
             res.status(200).json(rows[0][0])
         } else {
@@ -51,7 +51,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const { idReporteSiniestro } = req.params;
-    mysqlConnection.query('CALL D_ReporteSiniestro(?)', [idUsuario], (err, rows, fields) => {
+    mysqlConnection.query('CALL D_ReporteSiniestro(?)', [idReporteSiniestro], (err, rows, fields) => {
         if (!err) {
             res.status(200).json(rows[0][0])
         } else {

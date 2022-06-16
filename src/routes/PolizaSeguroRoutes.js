@@ -14,8 +14,8 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    mysqlConnection.query('CALL R_PolizaSeguroByID(?)', [id], (err, rows, fields) => {
+    const { idPolizaSeguro } = req.params;
+    mysqlConnection.query('CALL R_PolizaSeguroByID(?)', [idPolizaSeguro], (err, rows, fields) => {
         if (!err) {
             res.status(200).json(rows[0][0])
         } else {

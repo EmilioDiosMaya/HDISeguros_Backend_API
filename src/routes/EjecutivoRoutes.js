@@ -13,9 +13,9 @@ router.get('/', async (req, res) => {
     return res.status(200).json("Este es el GET de ejecutivos que trae a todos los ejecutivos");
 });
 
-router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    mysqlConnection.query('CALL R_UsuarioByID(?)', [id], (err, rows, fields) => {
+router.get('/:idUsuario', (req, res) => {
+    const { idUsuario } = req.params;
+    mysqlConnection.query('CALL R_UsuarioByID(?)', [idUsuario], (err, rows, fields) => {
         if (!err) {
             res.status(200).json(rows[0][0])
         } else {
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
     return res.status(200).json("Este es el POST de ejecutivos");
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:idUsuario', (req, res) => {
     const { idUsuario } = req.params;
     mysqlConnection.query('CALL CU_Usuario(?, ?, ?, ?, ?, ?, ?)', [idUsuario, NombreCompleto, FechaNacimiento, contrasenia, NombreUsuario, FechaRegistro, idTipoUsuario], (err, rows, fields) => {
         if (!err) {
@@ -49,7 +49,7 @@ router.put('/:id', (req, res) => {
     return res.status(200).json("Este es el PUT de ejecutivos");
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:idUsuario', (req, res) => {
     const { idUsuario } = req.params;
     mysqlConnection.query('CALL D_Usuario(?)', [idUsuario], (err, rows, fields) => {
         if (!err) {

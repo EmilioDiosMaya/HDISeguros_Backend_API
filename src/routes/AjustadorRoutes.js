@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
     return res.status(200).json("Este es el POST de ajustadores");
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:idUsuario', (req, res) => {
     const { idUsuario } = req.params;
     mysqlConnection.query('CALL CU_Usuario(?, ?, ?, ?, ?, ?, ?)', [idUsuario, NombreCompleto, FechaNacimiento, contrasenia, NombreUsuario, FechaRegistro, idTipoUsuario], (err, rows, fields) => {
         if (!err) {
@@ -50,7 +50,7 @@ router.put('/:id', (req, res) => {
     return res.status(200).json("Este es el PUT de ajustadores");
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:idUsuario', (req, res) => {
     const { idUsuario } = req.params;
     mysqlConnection.query('CALL D_Usuario(?)', [idUsuario], (err, rows, fields) => {
         if (!err) {
