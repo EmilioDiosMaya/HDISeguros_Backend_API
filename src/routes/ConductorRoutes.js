@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
             res.status(500)
         }
     })
-    return res.status(200).json("Este es el GET de conductores que trae a todos los conductores");
 });
 
 router.get('/:idConductor', (req, res) => {
@@ -22,7 +21,6 @@ router.get('/:idConductor', (req, res) => {
             res.status(500).json(err)
         }
     })
-    return res.status(200).json("Este es el GET de conductores que trae a un solo conductor");
 });
 
 router.post('/', (req, res) => {
@@ -34,7 +32,6 @@ router.post('/', (req, res) => {
             console.log(err)
         }
     })
-    return res.status(200).json("Este es el POST de conductores");
 });
 
 module.exports = router;

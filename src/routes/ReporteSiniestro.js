@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
             res.status(500)
         }
     })
-    return res.status(200).json("Este es el GET de Reporte de Siniestro que trae a todos los Reportes de Siniestros");
 });
 
 router.get('/:idReporteSiniestro', (req, res) => {
@@ -22,7 +21,6 @@ router.get('/:idReporteSiniestro', (req, res) => {
             res.status(500).json(err)
         }
     })
-    return res.status(200).json("Este es el GET de Reporte de Siniestro que trae a un solo Reporte de Siniestro");
 });
 
 router.post('/', (req, res) => {
@@ -34,7 +32,6 @@ router.post('/', (req, res) => {
             console.log(err)
         }
     })
-    return res.status(200).json("Este es el POST de Reporte de Siniestro");
 });
 
 router.put('/:idReporteSiniestro', (req, res) => {
@@ -46,7 +43,6 @@ router.put('/:idReporteSiniestro', (req, res) => {
             console.log(err)
         }
     })
-    return res.status(200).json("Este es el PUT de Reporte de Siniestro");
 });
 
 module.exports = router;

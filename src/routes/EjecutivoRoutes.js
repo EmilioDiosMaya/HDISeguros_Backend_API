@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
             res.status(500)
         }
     })
-    return res.status(200).json("Este es el GET de ejecutivos que trae a todos los ejecutivos");
 });
 
 router.get('/:idUsuario', (req, res) => {
@@ -22,7 +21,6 @@ router.get('/:idUsuario', (req, res) => {
             res.status(500).json(err)
         }
     })
-    return res.status(200).json("Este es el GET de ejecutivos que trae a un solo ejecutivo");
 });
 
 router.post('/', (req, res) => {
@@ -34,7 +32,6 @@ router.post('/', (req, res) => {
             console.log(err)
         }
     })
-    return res.status(200).json("Este es el POST de ejecutivos");
 });
 
 module.exports = router;

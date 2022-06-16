@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
             res.status(500)
         }
     })
-    return res.status(200).json("Este es el GET de Poliza de Seguro que trae a todas las Polizas de Seguro");
 });
 
 router.get('/:idPolizaSeguro', (req, res) => {
@@ -22,7 +21,6 @@ router.get('/:idPolizaSeguro', (req, res) => {
             res.status(500).json(err)
         }
     })
-    return res.status(200).json("Este es el GET de Poliza de Seguro que trae a una sola Poliza de Seguro");
 });
 
 router.post('/', (req, res) => {
@@ -34,7 +32,6 @@ router.post('/', (req, res) => {
             console.log(err)
         }
     })
-    return res.status(200).json("Este es el POST de Poliza de Seguro");
 });
 
 module.exports = router;
