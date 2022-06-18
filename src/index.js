@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 
 // Configuraciones
-app.set('port', process.env.PORT || 3000);
+app.set('puerto', process.env.PORT || 3000);
 app.set('json spaces', 2);
 
 // Middlewares
@@ -28,6 +28,6 @@ app.use('/loginconductor', require('./routes/LoginConductor'));
 app.use('/loginusuario', require('./routes/LoginUsuario'));
 
 // Empezando el servidor
-app.listen(3000, () => {
-    console.log(`Server on port ${app.get('port')}`);
-});
+app.listen(app.get('puerto'), () => {
+    console.log('SERVIDOR EN PUERTO', app.get('puerto'))
+})
