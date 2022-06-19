@@ -1,15 +1,11 @@
 const express = require('express');
 const app = express();
-const morgan = require('morgan');
 const cors = require('cors');
 
 // Configuraciones
 app.set('puerto', process.env.PORT || 3000);
-app.set('json spaces', 2);
 
 // Middlewares
-app.use(morgan('dev'));
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
@@ -26,6 +22,8 @@ app.use('/vehiculos', require('./routes/VehiculoRoutes'));
 app.use('/dictamenes', require('./routes/DictamenRoutes'));
 app.use('/loginconductor', require('./routes/LoginConductor'));
 app.use('/loginusuario', require('./routes/LoginUsuario'));
+app.use('/usuarios', require('./routes/UsuarioRoutes'));
+
 
 // Empezando el servidor
 app.listen(app.get('puerto'), () => {

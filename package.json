@@ -1,31 +1,19 @@
 {
-  "name": "hdiseguros_backend_api",
+  "name": "hci-api",
   "version": "1.0.0",
-  "description": "Esta es la API de HDI Seguros de la cuál se pasará la información de las solicitudes al sistema, manejando solicitudes de tipo; GET. POST, PATCH y DELETE",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon src/index.js",
-    "dev": "nodemon src/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EmilioDiosMaya/HDISeguros_Backend_API.git"
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/EmilioDiosMaya/HDISeguros_Backend_API/issues"
-  },
-  "homepage": "https://github.com/EmilioDiosMaya/HDISeguros_Backend_API#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
-    "node-fetch": "^3.2.6",
-    "nodemon": "^2.0.16",
-    "underscore": "^1.13.4"
+    "nodemon": "^2.0.16"
   }
 }
