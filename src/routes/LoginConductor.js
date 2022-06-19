@@ -4,7 +4,7 @@ const mysqlConnection = require('../database');
 
 router.post('/', (req, res) => {
     const { Telefono, NombreUsuario, Contraseña } = req.body
-    mysqlConnection.query('CALL LoginConductor(?, ?, ?)', [Telefono, NombreUsuario, Contraseña], (err, rows) => {
+    mysqlConnection.query('CALL LoginConductor(?, ?)', [Telefono, Contraseña], (err, rows) => {
         if (!err) {
             if (!rows[0][0].hasOwnProperty('idUsuario')) {
                 res.status(200).json(rows[0][0])
