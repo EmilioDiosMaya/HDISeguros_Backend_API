@@ -6,11 +6,9 @@ router.post('/', (req, res) => {
     const { NombreUsuario, Contrasenia } = req.body
     mysqlConnection.query('CALL LoginUsuario(?, ?)', [NombreUsuario, Contrasenia], (err, rows) => {
         if (!err) {
-            if (!rows[0][0].hasOwnProperty('idUsuario')) {
-                res.status(200).json(rows[0][0])
-            } else {
-                res.status(500).json('Error de conexion con el servidor')
-            }
+            res.status(200).json(rows[0][0])
+        }else{
+            console.log(err)
         }
     })
 })
