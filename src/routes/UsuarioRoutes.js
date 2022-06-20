@@ -27,19 +27,12 @@ router.get('/:idUsuario', (req, res) => {
 
 router.post('/', (req, res) => {
     const { NombreCompleto, FechaNacimiento, Contrasenia, NombreUsuario, idTipoUsuario } = req.body
-    bcrypt.hash(Contrasenia, 10, function(err, hash){
-        if(hash){
-            mysqlConnection.query('CALL C_Usuario(?, ?, ?, ?, ?)', [NombreCompleto, FechaNacimiento, hash, NombreUsuario, idTipoUsuario], (err, rows, fields) => {
-                if (!err) {
-                    res.status(201).json(rows[0][0])
-                } else {
-                    console.log(err)
-                }
-            })
-        }else{
+    mysqlConnection.query('CALL C_Usuario(?, ?, ?, ?, ?)', [NombreCompleto, FechaNacimiento, Contrasenia, NombreUsuario, idTipoUsuario], (err, rows, fields) => {
+        if (!err) {
+            res.status(201).json(rows[0][0])
+        } else {
             console.log(err)
         }
     })
 });
-
 module.exports = router;
