@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
         if (!err) {
             res.status(200).json(rows[0][0])
         }else{
-            console.log(err)
+            res.status(500).json('Error de conexion con el servidor')
         }
     })
 })

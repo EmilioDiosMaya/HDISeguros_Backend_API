@@ -1,8 +1,6 @@
 const { Router } = require('express');
 const router = Router();
 const mysqlConnection = require('../database');
-const bcrypt = require('bcryptjs');
-
 
 router.get('/', async (req, res) => {
     mysqlConnection.query('CALL R_Usuario()', (err, rows, fields) => {
@@ -35,4 +33,5 @@ router.post('/', (req, res) => {
         }
     })
 });
+
 module.exports = router;
