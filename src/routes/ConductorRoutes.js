@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const mysqlConnection = require('../database');
+const bcrypt = require('bcryptjs');
 
 router.get('/', async (req, res) => {
     mysqlConnection.query('CALL R_Conductor()', (err, rows, fields) => {
@@ -25,10 +26,16 @@ router.get('/:idConductor', (req, res) => {
 
 router.post('/', (req, res) => {
     const { NombreCompleto, FechaNacimiento, Contrasenia, idTipoUsuario, Telefono, NumeroLicencia } = req.body
-    mysqlConnection.query('CALL C_Conductor(?, ?, ?, ?, ?, ?)', [NombreCompleto, FechaNacimiento, Contrasenia, idTipoUsuario, Telefono, NumeroLicencia], (err, rows, fields) => {
-        if (!err) {
-            res.status(201).json(rows[0][0])
-        } else {
+    bcrypt.hash(Contrasenia, 10, function(err, hash){
+        if(hash){
+            mysqlConnection.query('CALL C_Conductor(?, ?, ?, ?, ?, ?)', [NombreCompleto, FechaNacimiento, hash, idTipoUsuario, Telefono, NumeroLicencia], (err, rows, fields) => {
+                if (!err) {
+                    res.status(201).json(rows[0][0])
+                } else {
+                    console.log(err)
+                }
+            })
+        }else{
             console.log(err)
         }
     })

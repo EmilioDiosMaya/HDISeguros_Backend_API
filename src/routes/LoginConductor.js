@@ -1,16 +1,24 @@
 const { Router } = require('express');
 const router = Router();
 const mysqlConnection = require('../database');
+const bcrypt = require('bcryptjs');
+
 
 router.post('/', (req, res) => {
-    const { Telefono, NombreUsuario, Contraseña } = req.body
-    mysqlConnection.query('CALL LoginConductor(?, ?)', [Telefono, Contraseña], (err, rows) => {
-        if (!err) {
-            if (!rows[0][0].hasOwnProperty('idUsuario')) {
-                res.status(200).json(rows[0][0])
-            } else {
-                res.status(500).json('Error de conexion con el servidor')
-            }
+    const { Telefono, Contrasenia } = req.body
+    bcrypt.hash(Contrasenia, 10, function(err, hash){
+        if(hash){
+            mysqlConnection.query('CALL LoginConductor(?, ?)', [Telefono, hash], (err, rows) => {
+                if (!err) {
+                    if (!rows[0][0].hasOwnProperty('idUsuario')) {
+                        res.status(200).json(rows[0][0])
+                    } else {
+                        res.status(500).json('Error de conexion con el servidor')
+                    }
+                }
+            })
+        }else{
+            console.log(err)
         }
     })
 })
